@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>OneToMany_AlbumToSong</title>
+</head>
+<body>
+    <div th:each="album : ${albums}">
+        <h2 th:text="${album.title}"></h2>
+        <h4 th:inline="text"> is an album by [[${album.artist}]] that came out in [[${album.year}]].</h4>
+        <h5 th:inline="text"> The genre is [[${album.genre}]].</h5>
+        <ul>
+            <th:block   th:each="song : ${album.songs}">
+                <li th:inline="text">"[[${song.title}]]" was track number [[${song.trackNumber}]]
+                and it goes something like this... "[[${song.lyrics}]]".</li>
+            </th:block>
+        </ul>
+
+    </div>
+</body>
+</html>
